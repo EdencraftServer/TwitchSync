@@ -9,6 +9,8 @@ import org.bukkit.command.CommandExecutor;
 import org.bukkit.command.CommandSender;
 import org.bukkit.entity.Player;
 
+import static me.okx.twitchsync.util.generic.Messages.*;
+
 public class TwitchSyncCommand implements CommandExecutor {
   private TwitchSync plugin;
 
@@ -19,7 +21,7 @@ public class TwitchSyncCommand implements CommandExecutor {
   @Override
   public boolean onCommand(CommandSender cs, Command command, String s, String[] args) {
     if (!(cs instanceof Player)) {
-      cs.sendMessage(ChatColor.RED + "You must be a player to do this");
+      cs.sendMessage(CONSOLE_EXECUTION);
       return true;
     }
 
@@ -27,14 +29,14 @@ public class TwitchSyncCommand implements CommandExecutor {
 
     String url = plugin.getValidator().createAuthenticationUrl(player.getUniqueId());
     if(url == null) {
-      player.sendMessage(ChatColor.RED + "An error occurred. Please try again.");
+      player.sendMessage(ERROR_OCCURRED);
       return true;
     }
 
-    player.spigot().sendMessage(new ComponentBuilder("Click this text to sync to Twitch")
+    player.spigot().sendMessage(new ComponentBuilder(SYNC_TWITCH)
         .color(net.md_5.bungee.api.ChatColor.GREEN)
         .event(new ClickEvent(ClickEvent.Action.OPEN_URL, url))
-        .event(new HoverEvent(HoverEvent.Action.SHOW_TEXT, new ComponentBuilder("Click to sync to Twitch").create()))
+        .event(new HoverEvent(HoverEvent.Action.SHOW_TEXT, new ComponentBuilder(SYNC_TWITCH_ALERT).create()))
         .create());
 
     return true;

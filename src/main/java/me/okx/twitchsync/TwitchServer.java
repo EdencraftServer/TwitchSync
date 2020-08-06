@@ -28,7 +28,7 @@ public class TwitchServer {
     server = HttpServer.create(new InetSocketAddress(port), 0);
     server.createContext("/", ex -> {
       try {
-        plugin.debug("Handling request " + ex + " on " + Thread.currentThread().getName());
+        plugin.debug("Gestionando la solicitud " + ex + " en " + Thread.currentThread().getName());
 
         SyncResponse response = new SyncResponseFailure(SyncMessage.INVALID_URL);
 
@@ -68,7 +68,7 @@ public class TwitchServer {
           SyncResponseFailure failure = (SyncResponseFailure) response;
           message = failure.getMessage();
         } else {
-          throw new IllegalArgumentException("Sync response must either be success or failure.");
+          throw new IllegalArgumentException("La respuesta de sincronización debe ser un éxito o un fracaso.");
         }
 
         byte[] bytes = message.getValue(plugin).getBytes("UTF-8");

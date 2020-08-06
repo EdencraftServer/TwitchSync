@@ -22,14 +22,14 @@ public class Revoker extends BukkitRunnable  {
 
   @Override
   public void run() {
-    plugin.getLogger().info("Revoking now.");
+    plugin.getLogger().info("Revocando ahora.");
     long start = System.currentTimeMillis();
 
     Map<UUID, Token> tokens = plugin.getSqlHelper().getTokens().get();
     checkTokens(tokens);
 
     long time = System.currentTimeMillis() - start;
-    plugin.getLogger().info("Finished revoking in " + time + "ms.");
+    plugin.getLogger().info("Terminando de revocar en " + time + "ms.");
   }
 
   private void checkTokens(Map<UUID, Token> tokens) {

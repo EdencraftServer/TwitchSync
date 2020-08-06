@@ -62,7 +62,7 @@ public class TwitchSync extends JavaPlugin {
       server = new TwitchServer(this);
       server.start();
     } catch (IOException e) {
-      getLogger().log(Level.SEVERE, "Error starting web server");
+      getLogger().log(Level.SEVERE, "Error iniciando el servidor web");
       e.printStackTrace();
     }
   }

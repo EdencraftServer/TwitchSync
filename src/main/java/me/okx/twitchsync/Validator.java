@@ -77,7 +77,7 @@ public class Validator {
     Users users = plugin.debug(gson.fromJson(reader, Users.class), "Users");
 
     if (users.getTotal() == 0) {
-      plugin.getLogger().log(Level.SEVERE, "No channels found");
+      plugin.getLogger().log(Level.SEVERE, "No se han encontrado canales");
       return null;
     }
 
